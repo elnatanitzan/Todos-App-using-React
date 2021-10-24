@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import * as React from 'react';
+import { Component } from 'react';
 
 class AddTodo extends Component {
 
@@ -23,21 +24,22 @@ class AddTodo extends Component {
         this.props.addTodo(this.state.new_todo);
         const emty_todo = {title: null, text: null, date: null, done: false}
         this.setState({ new_todo:  emty_todo})
-        e.target.reset()
-        
+        e.target.reset()   
     }
+
     render() {
         
         return (
             <div>
                 <h3>Add new Task:</h3>
                 <form className="form-class" onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                    <label htmlFor="title">Title:</label>
-                    <input type="text" id="title" maxLength="30"/>
-                    <label htmlFor="text">Note:</label>
-                    <input type="text"  id="text" maxLength="300" required/>
+                    <label htmlFor="title"></label>
+                    <input type="text" id="title" maxLength="30" placeholder="Title..."/>
+                    <label htmlFor="text"></label>
+                    <input className="note" type="text"  id="text" maxLength="300" required placeholder="task..."/>
                     <button >Add</button>
                 </form>  
+                
             </div>
         )
     }
