@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export class Todos extends Component {
 
@@ -9,19 +9,19 @@ export class Todos extends Component {
 
         const todos_list = todos.map(_todo => {
             return (
-                <div key={_todo.id} className="todo">
+                <div key={_todo.id} className="todo" on>
+                    <div className="button" onClick={() => this.props.deleteTodo(_todo.id)}></div>
                     <h3>{_todo.title}</h3>
-                    <p>{_todo.text}</p>
-                    <span>
-                        <p>created in {_todo.date}</p>
-                        <button onClick={() => this.props.deleteTodo(_todo.id)}>Done</button>
-                    </span>
+                    <p className="note">{_todo.text}</p>
+                    <div className="date">
+                        <p>{_todo.date} | {_todo.time}</p>
+                    </div>
                 </div>
             )
         })
 
         return (
-            <div className="todos">
+            <div className="todos" >
                 {todos_list} 
             </div>
         )

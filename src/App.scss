@@ -2,10 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 body {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     font-family: "Nunito", sans-serif;
-    background: #cecece;
+    background: #e7e7e7;
     outline: none;
+    margin: 0;
 }
 
 button {
@@ -15,6 +17,13 @@ button {
 header {
     text-align: center;
     user-select: none;
+    border-bottom: 2px solid #303030;
+    padding: 15px;
+
+    h1 {
+        margin: 0;
+        // padding: 2rem 0 1rem 0;
+    }
 
     form {
         display: flex;
@@ -22,48 +31,85 @@ header {
         justify-content: center;
         align-items: center;
 
-
-        
         input {
             max-width: 350px;
             border-radius: 8px;
             padding: 3px 6px;
             border: 1px solid #202020;
-            background: #cecece;
-            font-size: 16px;
-
+            background: #e7e7e7;
+            font-size: 20px;
         }
         
         .note {
             white-space: pre;
-            word-break: break-word;
-            
+            word-break: break-word;   
         }
+
         :nth-child(4), :nth-child(5) {
             margin-top: 1rem;
         }
-
-        
     }
-
-    
 }
-.todos {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    margin: 0;
-    padding: 0;
 
-    .todo {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        border-radius: 8px;
-        text-align: center;
-        border: 3px solid rgb(119, 119, 119);
-        background: #c9c9c9;
-        box-shadow: 4px 4px 20px -9px #303030;
+.main {
+    padding: 15px;
+    .todos {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    
+        .todo {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 3px solid rgb(119, 119, 119);
+            background: #c9c9c9;
+            box-shadow: 4px 4px 20px -9px #303030;
+            position: relative;
+
+
+            &::before {
+
+            } 
+            h3 {
+                margin: 0;
+            }
+
+            .note {
+                height: 4em;
+            }
+
+            .date {
+                
+                p {margin: 0; }
+                
+                // place-items: center;
+            }
+
+            .button {
+                position: absolute;
+                top: 0%;
+                right: 0%;
+                transition: all .2s;
+                &:hover {
+                    transform: scale(104%) rotate(3deg);
+                }
+                &:active {
+                    transform: rotate(-6deg);
+                }
+                &::before { 
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    // background: #414141;
+                    // box-shadow: 5px 5px 20px #414141;
+                    // border: 1px solid black;
+                    content: '✅';
+                }
+                
+
+            }
+        }
     }
 }

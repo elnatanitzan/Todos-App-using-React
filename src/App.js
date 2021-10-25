@@ -3,15 +3,14 @@ import './App.scss';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 
-
 export class App extends Component {
   
   state = {
     todos: [
-      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Learn React', text:  'Learn React all the morning', date: new Date().toLocaleString(), done: false},
-      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleString(), done: false},
-      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleString(), done: false},
-    ]
+      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Learn React',  text:  'Learn React all the morning', date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString(), done: false},
+      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false},
+      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false}
+    ],
   }
 
 
@@ -32,7 +31,8 @@ export class App extends Component {
     new_arr.push({
       ...new_todo, 
       id: Math.random().toString(36).substr(2, 9), 
-      date: new Date().toLocaleString()
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
     })
     this.setState({ todos: new_arr }
     )
@@ -46,7 +46,8 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      
+      <div className="App">
         <header>
           <h1>Todo-list</h1>
           <AddTodo addTodo={this.addTodo}/>
