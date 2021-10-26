@@ -11,6 +11,11 @@ export class App extends Component {
       {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false},
       {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false}
     ],
+  //   todos: [
+  //     {id: Math.random().toString(36).substr(2, 9), appear: true, title: '*EXAMPLE* - Learn React',  text:  'Learn React all the morning', date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString(), done: false},
+  //     {id: Math.random().toString(36).substr(2, 9), appear: true, title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false},
+  //     {id: Math.random().toString(36).substr(2, 9), appear: true, title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false}
+  //   ],
   }
 
 
@@ -49,7 +54,7 @@ export class App extends Component {
       
       <div className="App">
         <header>
-          <h1>Todo-list</h1>
+          <h1>Todos-list</h1>
           <AddTodo addTodo={this.addTodo}/>
         </header>
         <div className="main">
