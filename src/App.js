@@ -7,15 +7,10 @@ export class App extends Component {
   
   state = {
     todos: [
-      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Learn React',  text:  'Learn React all the morning', date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString(), done: false},
-      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false},
-      {id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false}
+      {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Learn React',  text:  'Learn React all the morning', date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString(), done: false},
+      {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false},
+      {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false}
     ],
-  //   todos: [
-  //     {id: Math.random().toString(36).substr(2, 9), appear: true, title: '*EXAMPLE* - Learn React',  text:  'Learn React all the morning', date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString(), done: false},
-  //     {id: Math.random().toString(36).substr(2, 9), appear: true, title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false},
-  //     {id: Math.random().toString(36).substr(2, 9), appear: true, title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false}
-  //   ],
   }
 
 
@@ -31,6 +26,8 @@ export class App extends Component {
     localStorage.setItem('todos', JSON.stringify(this.state.todos))
   }
 
+
+  
   addTodo = (new_todo) => {
     const new_arr = [...this.state.todos];
     new_arr.push({
@@ -39,14 +36,19 @@ export class App extends Component {
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString(),
     })
-    this.setState({ todos: new_arr }
-    )
-
+    this.setState({ todos: new_arr })
   }
 
   deleteTodo = (_id) => {
     const new_todos = this.state.todos.filter(todo => todo.id !== _id);
     this.setState({ todos: new_todos, })
+  }
+
+  expandTodo = (_id) => {
+    const expand_todo = [...this.state.todos];
+    const todoExpand = expand_todo.find( ({ id }) => id === _id );
+    todoExpand.full_display = !todoExpand.full_display;
+    this.setState({ todos: expand_todo, })
   }
 
   render() {
@@ -58,7 +60,9 @@ export class App extends Component {
           <AddTodo addTodo={this.addTodo}/>
         </header>
         <div className="main">
-          <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+          <Todos todos={this.state.todos} 
+          deleteTodo={this.deleteTodo}
+          expandTodo={this.expandTodo}/>
         </div>
       </div>
     )

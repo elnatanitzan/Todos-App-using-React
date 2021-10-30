@@ -59,35 +59,67 @@ header {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 15px;
-        
-        .appear { animation: appear .5s; } 
-        .disappear { animation: disappear .5s; }
+
+        .appear {
+            // animation: appear .5s;
+        }
+
         .todo {
-            padding: 1rem;
+            display: flex;
+            height: fit-content;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: .5rem;
             border-radius: 8px;
             border: 3px solid rgb(119, 119, 119);
             background: #c9c9c9;
             box-shadow: 4px 4px 20px -9px #303030;
-            position: relative;  
-
-            
-
-            h3 {
+            position: relative;
+            animation: appear .5s;
+        
+            h4 {
                 margin: 0;
+                min-height: 2em;
+                font-size: 16px;
             }
 
-            .note {
-                height: 4em;
+            .note-container {
+                .note {
+                    &.less {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                    &.more {
+                        white-space: wordwrap;
+                        overflow: visible;
+                        text-overflow: unset;
+                        height: fit-content;
+                    }
+                }
+    
+                .display-button {
+                    outline: hidden;
+                    border: 0;
+                    background: #000000;
+                    color: #ffffff;
+                    padding: .3rem;
+                    font-size: .6rem;
+                    margin: .3rem 0;
+                    display: block;
+                    width: fit-content;
+    
+                }
+    
+            }
+            .date {  
+                font-size:12px;
+                text-align: right;
+                margin: 0px;
+                color: #555555
             }
 
-            .date {
-                
-                p {margin: 0; }
-                
-                // place-items: center;
-            }
-
-            .button {
+            .done {
                 position: absolute;
                 top: 0%;
                 right: 0%;
@@ -102,13 +134,8 @@ header {
                     position: absolute;
                     top: 5px;
                     right: 5px;
-                    // background: #414141;
-                    // box-shadow: 5px 5px 20px #414141;
-                    // border: 1px solid black;
                     content: '✅';
                 }
-                
-
             }
         }
     }
@@ -118,7 +145,4 @@ header {
     from { opacity: 0; transform: translate3d(42px, -62px, -135px); }
     to { opacity: 1; transform: translate3d(0);}
 }
-@keyframes disappear {
-    from { opacity: 1; transform: translate3d(0); }
-    to { opacity: 0; transform: translate3d(42px, -62px, -135px);}
-}
+

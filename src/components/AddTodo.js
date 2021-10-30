@@ -9,7 +9,8 @@ class AddTodo extends Component {
             text: null,
             date: null,
             time: null,
-            done: false
+            done: false,
+            full_display: false
         },
     }
 
