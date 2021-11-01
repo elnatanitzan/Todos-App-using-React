@@ -27,7 +27,7 @@ export class App extends Component {
 
   addTodo = (new_todo) => {
     const new_arr = [...this.state.todos];
-    new_arr.push({
+    new_arr.unshift({
       ...new_todo, 
       id: Math.random().toString(36).substr(2, 9), 
       date: new Date().toLocaleDateString(),
