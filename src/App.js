@@ -13,7 +13,6 @@ export class App extends Component {
     ],
   }
 
-
   componentDidMount() {
     if (localStorage.getItem('todos')) {
       this.setState({
@@ -26,8 +25,6 @@ export class App extends Component {
     localStorage.setItem('todos', JSON.stringify(this.state.todos))
   }
 
-
-  
   addTodo = (new_todo) => {
     const new_arr = [...this.state.todos];
     new_arr.push({
@@ -35,7 +32,7 @@ export class App extends Component {
       id: Math.random().toString(36).substr(2, 9), 
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString(),
-    })
+    });
     this.setState({ todos: new_arr })
   }
 
@@ -53,7 +50,6 @@ export class App extends Component {
 
   render() {
     return (
-      
       <div className="App">
         <header>
           <h1>Todos-list</h1>
