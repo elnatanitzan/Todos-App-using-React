@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import './App.scss';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+import { connect } from 'react-redux';
+import { delete_todo_action, add_todo_action, expand_todo_action, restore_todos_a} from './reducers/actions'
+import './App.scss';
 
 export class App extends Component {
   
@@ -15,37 +17,25 @@ export class App extends Component {
 
   componentDidMount() {
     if (localStorage.getItem('todos')) {
-      this.setState({
-        todos: [...JSON.parse(localStorage.getItem('todos'))],
-      })
+      const restoreTodos = [...JSON.parse(localStorage.getItem('todos'))]
+      this.props.restore_todos(restoreTodos);
     }
   }
 
   componentDidUpdate() {
-    localStorage.setItem('todos', JSON.stringify(this.state.todos))
+    localStorage.setItem('todos', JSON.stringify(this.props.todos))
   }
 
   addTodo = (new_todo) => {
-    const new_arr = [...this.state.todos];
-    new_arr.unshift({
-      ...new_todo, 
-      id: Math.random().toString(36).substr(2, 9), 
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-    });
-    this.setState({ todos: new_arr })
+   this.props.add_todo(new_todo);
   }
 
   deleteTodo = (_id) => {
-    const new_todos = this.state.todos.filter(todo => todo.id !== _id);
-    this.setState({ todos: new_todos, })
+   this.props.delete_todo(_id);
   }
 
   expandTodo = (_id) => {
-    const expand_todo = [...this.state.todos];
-    const todoExpand = expand_todo.find( ({ id }) => id === _id );
-    todoExpand.full_display = !todoExpand.full_display;
-    this.setState({ todos: expand_todo, })
+   this.props.expand_todo(_id);
   }
 
   render() {
@@ -56,7 +46,7 @@ export class App extends Component {
           <AddTodo addTodo={this.addTodo}/>
         </header>
         <div className="main">
-          <Todos todos={this.state.todos} 
+          <Todos todos={this.props.todos} 
           deleteTodo={this.deleteTodo}
           expandTodo={this.expandTodo}/>
         </div>
@@ -65,4 +55,20 @@ export class App extends Component {
   }
 }
 
-export default App;
+const reducerToApp = (reducerState, appProps) => {
+  return {
+    ...appProps,
+    todos: reducerState.todos
+  };
+}
+
+const dispatchFunc = (dispatch) => {
+  return {
+    delete_todo: id => dispatch(delete_todo_action(id)),
+    add_todo: new_todo => dispatch(add_todo_action(new_todo)),
+    expand_todo: id => dispatch(expand_todo_action(id)),
+    restore_todos: todos => dispatch(restore_todos_a(todos))
+  }
+}
+
+export default connect(reducerToApp, dispatchFunc)(App);

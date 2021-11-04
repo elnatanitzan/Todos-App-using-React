@@ -39,13 +39,13 @@ header .fas {
   transition: transform .3s;
   transition: transform .3s, -webkit-transform .3s;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 header .fas:hover {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
   color: #115266;
-  cursor: pointer;
   -webkit-transition: -webkit-transform .3s;
   transition: -webkit-transform .3s;
   transition: transform .3s;
@@ -178,6 +178,7 @@ header form :nth-child(4), header form :nth-child(5) {
   transition: -webkit-box-shadow .2s;
   transition: box-shadow .2s;
   transition: box-shadow .2s, -webkit-box-shadow .2s;
+  cursor: pointer;
 }
 
 .main .todos .todo .note-container .display-button:hover {
@@ -202,6 +203,7 @@ header form :nth-child(4), header form :nth-child(5) {
   top: 8px;
   right: 8px;
   font-size: 23px;
+  cursor: pointer;
 }
 
 .main .todos .todo i:hover {
