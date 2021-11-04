@@ -17,17 +17,9 @@ const todosReducer = (state = init_state, action) => {
     }
 
     else if (action.type === 'ADD_TODO') {
-        const new_arr = [...state.todos];
-        new_arr.unshift({
-            ...action.new_todo, 
-            id: Math.random().toString(36).substr(2, 9), 
-            date: new Date().toLocaleDateString(),
-            time: new Date().toLocaleTimeString(),
-            full_display: false
-        });
         return {
             ...state,
-            todos: new_arr
+            todos: [action.new_todo, ...state.todos]
         }
     }
 

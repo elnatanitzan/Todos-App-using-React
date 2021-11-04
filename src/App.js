@@ -8,11 +8,6 @@ import './App.scss';
 export class App extends Component {
   
   state = {
-    todos: [
-      {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Learn React',  text:  'Learn React all the morning', date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString(), done: false},
-      {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false},
-      {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false}
-    ],
   }
 
   componentDidMount() {
@@ -27,7 +22,14 @@ export class App extends Component {
   }
 
   addTodo = (new_todo) => {
-   this.props.add_todo(new_todo);
+    const newTodo = {
+      ...new_todo,
+      id: Math.random().toString(36).substr(2, 9),
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+      full_display: false
+    }
+   this.props.add_todo(newTodo);
   }
 
   deleteTodo = (_id) => {
