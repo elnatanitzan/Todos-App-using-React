@@ -16,6 +16,8 @@ header {
     box-shadow: 0 0 10px 0 #303030;
     padding: 15px;
     background: #c9c9c9;
+    animation: appearform .3s;
+    
     
     h1 {
         margin: 0;
@@ -37,12 +39,23 @@ header {
         } 
     }
     
+    .hide-form{
+        height: auto;
+        transition: height .3s;
+    }
+    
+    .show-form {
+        transition: height .3s;
+        height: auto;
+    }
+
     form {
         margin-top: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        animation: appearform .3s;
 
         input {
             max-width: 350px;
@@ -96,7 +109,7 @@ header {
             background: #c9c9c9;
             box-shadow: 4px 4px 20px -9px #303030;
             position: relative;
-            animation: appear .5s;
+            animation: appear .3s;
 
             &:hover {
                 box-shadow: 5px 5px 30px -9px #303030;
@@ -115,10 +128,11 @@ header {
                         overflow: hidden;
                         white-space: nowrap;
                         text-overflow: ellipsis;
-                        word-wrap: none;
+                        word-wrap: break-word;
                     }
-
+                    
                     &.more {
+                        word-wrap: break-word;
                         overflow: visible;
                     }
                 }
@@ -137,6 +151,7 @@ header {
                     padding: 5px 7px;
                     box-shadow: 0 2px 5px 0 #414141;
                     transition: box-shadow .2s;
+                    cursor: pointer;
                     &:hover {
                         box-shadow: 0 3px 5px 0 #414141;
                         transition: box-shadow .2s;
@@ -159,6 +174,7 @@ header {
                 top: 8px;
                 right: 8px;
                 font-size: 23px;
+                cursor: pointer;
                 
                 &:hover {
                     transition: color .3s;
@@ -175,7 +191,16 @@ header {
     to { opacity: 1; transform: translate3d(0);}
 }
 
+@keyframes appearform {
+    from { opacity: 0; transform: translateY(-200px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes shake {
     from { transform: rotate(5deg) scale(110%); }
     to { transform: rotate(-5deg) scale(100%); }
 }
+
+// @keyframes heigth {
+//     from { height: }
+// }
