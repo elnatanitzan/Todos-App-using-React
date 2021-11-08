@@ -26,7 +26,7 @@ class AddTodo extends Component {
         this.setState({ show_input: !this.state.show_input });
         e.preventDefault();
         this.props.addTodo(this.state.new_todo);
-        const emty_todo = {title: null, text: null, date: null, done: false};
+        const emty_todo = {title: null, text: null, date: null, done: false, full_display: false};
         this.setState({ new_todo:  emty_todo});
         e.target.reset()   
     }
@@ -36,7 +36,7 @@ class AddTodo extends Component {
             <div>
                 { this.state.show_input === false &&
                     <i className="fas fa-plus-circle"
-                    onClick={() => this.setState({ show_input: !this.state.show_input })}>
+                    onClick={() =>  setTimeout(() => this.setState({ show_input: !this.state.show_input }), 200) }>
                     </i>
                 }
                 

@@ -51,7 +51,7 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
+        <header >
           <h1>Todos-list</h1>
           <AddTodo addTodo={this.addTodo}/>
         </header>
