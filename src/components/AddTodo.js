@@ -11,7 +11,6 @@ export default function AddTodo({ addTodo }) {
         addTodo({ 
             title, 
             text, 
-            done: false, 
             id: Math.random().toString(36).substr(2, 9), 
             full_display: false, 
             date: new Date().toLocaleDateString(), 

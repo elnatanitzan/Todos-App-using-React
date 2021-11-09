@@ -4,9 +4,9 @@ import AddTodo from './components/AddTodo';
 import './App.scss';
 
 const initial_todos = [
-    {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Learn React',  text:  'Learn React all the morning', date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString(), done: false},
-    {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false},
-    {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), done: false}
+    {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Learn React',  text:  'Learn React all the morning', date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString()},
+    {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - By food', text:  'by food in market', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString()},
+    {full_display: false, id: Math.random().toString(36).substr(2, 9), title: '*EXAMPLE* - Pray to God!', text:  'go to fild todo Hidbodedut', date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString()}
 ];
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
         } else { return initial_todos }
     })
 
-    const  addTodo = (new_todo) => {
-        setTodos([...todos, new_todo])
+    const addTodo = (new_todo) => {
+        setTodos([new_todo, ...todos])
     }
 
     const deleteTodo = (id) => {
