@@ -1,6 +1,6 @@
 # Todos-list-app-using-React
 
-Here i'm creating 3 verisions -
+Here i'm creating 3 versions -
 
 -using regular state & props of class components
 
